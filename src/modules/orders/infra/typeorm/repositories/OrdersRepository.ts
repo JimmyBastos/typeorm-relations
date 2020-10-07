@@ -11,7 +11,10 @@ class OrdersRepository implements IOrdersRepository {
     this.ormRepository = getRepository(Order);
   }
 
-  public async create({ customer, products }: ICreateOrderDTO): Promise<Order> {
+  public async create({
+    customer,
+    products,
+  }: ICreateOrderDTO): Promise<Order | void> {
     // TODO
   }
 
