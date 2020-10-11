@@ -14,7 +14,7 @@ interface IRequest {
 @injectable()
 class CreateProductService {
   constructor(
-    @inject('ProductRepository')
+    @inject('ProductsRepository')
     private productsRepository: IProductsRepository,
   ) {}
 
@@ -22,7 +22,7 @@ class CreateProductService {
     const productAlreadyExists = await this.productsRepository.findByName(name);
 
     if (productAlreadyExists) {
-      throw new AppError('This product already exists.', 422);
+      throw new AppError('This product already exists.', 400);
     }
 
     const product = await this.productsRepository.create({
